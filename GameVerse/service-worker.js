@@ -38,3 +38,10 @@ self.addEventListener('fetch', event => {
     })
   );
 });
+if ('service-worker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => console.log('Service Worker registrado', reg))
+      .catch(err => console.log('Falha no SW', err));
+  });
+}
