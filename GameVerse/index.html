@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameVerse</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="logo">GameVerse</div>
+    <nav class="desktop-nav">
+      <a href="#initial">Início</a>
+      <a href="#recent-games-carousel">Lançamentos</a>
+      <a href="#promo">Promoções</a>
+      <a href="#shop">Catálogo</a>
+        <div class="desktop-user-area" id="desktopUserArea">
+            <a href="#" id="userIcon"><i class="fas fa-user"></i></a>
+            <a href="#" id="cartIcon" data-count="0"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </nav>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <nav class="mobile-nav" id="mobileMenu">
+      <a href="#initial">Início</a>
+      <a href="#recent-games-carousel">Lançamentos</a>
+      <a href="#promo">Promoções</a>
+      <a href="#shop">Catálogo</a>
+      <a href="#" id="cartIconMobile" data-count="0">Carrinho</a>
+      <a href="#perfil">Perfil</a>
+      <a href="#exit">Sair</a>
+        <div class="user-area" id="userArea"></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="initial">
+      <h1>Bem-vindo ao GameVerse</h1>
+      <p>Explore o universo dos games em um só lugar.</p>
+      <a href="#" onclick="event.preventDefault()" class="btn-view">Começar</a>
+    </section>
+
+    <section class="recent-games-carousel" id="recent-games-carousel">
+        <h2>Jogos Adicionados Recentemente</h2>
+            <div class="carousel-box">
+                <div class="carousel-container" id="recentCarousel">
+                    <img src="img/forAll/Euro_Truck_Simulator_2_PC_capa.jpg" alt="Euro Truck Simulator 2">
+                    <img src="img/forAll/Grand_Theft_Auto_V_capa.png" alt="GTA V">
+                    <img src="img/forAll/thewalkingdeadDefinitiveEdition_capa.jpg" alt="The Walking Dead Definitive Edition">
+                </div>
+                    <div class="carousel-overlay" id="carouselOverlay">
+                        <h3 id="overlayTitle">Euro Truck Simulator 2</h3>
+                        <a href="#" onclick="event.preventDefault()" class="btn-comprar-overlay">Visualizar</a>
+                    </div>
+
+                <div class="carousel-indicators" id="recentIndicators">
+                    <span class="active"></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+    </section>
+
+
+    <section class="grid-section">
+        <h2>Destaques da Semana</h2>
+            <div class="grid-games">
+                <article class="game-card">
+                <img src="img/forAll/Farming Simulator 22_capa.jpg" alt="Destaque da semana">
+                <h2>Farming Simulator 22</h2>
+                <a href="#" onclick="event.preventDefault()" class="btn-view">Visualizar</a>
+            </article>
+
+            <article class="game-card">
+                <img src="img/forAll/Subnautica_capa.png" alt="Destaque da semana">
+                <h2>Subnautica</h2>
+                <a href="#" onclick="event.preventDefault()" class="btn-view">Visualizar</a>
+            </article>
+
+            <article class="game-card">
+                <img src="img/forAll/The Sims 4_capa.png" alt="Destaque da semana">
+                <h2>The Sims 4</h2>
+                <a href="#" onclick="event.preventDefault()" class="btn-view">Visualizar</a>
+            </article>
+            </div>
+    </section>
+
+    <section class="grid-section" id="promo">
+    <h2>Jogos em Promoção</h2>
+        <div class="grid-games">
+            <article class="game-card">
+                <img src="img/forAll/thewalkingdeadDefinitiveEdition_capa.jpg" alt="Promoção do Dia">
+                <h2>The Walking Dead Definitive Edition</h2>
+                <p><s>R$ 250,90</s> <strong>R$ 75,90</strong></p>
+                <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+            </article>
+
+            <article class="game-card">
+                <img src="img/forAll/Mafia_Definitive_Edition_capa.jpg" alt="Promoção do Dia">
+                <h2>Mafia Definitive Edition</h2>
+                <p><s>R$ 280,90</s> <strong>R$ 45,40</strong></p>
+                <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+            </article>
+        </div>
+    </section>
+
+    <div class="search-box">
+        <input type="text" id="gameSearch" placeholder="Pesquisar jogos...">
+    </div>
+
+    <div id="searchResults" class="search-results"></div>
+
+    <section class="game-section" id="shop">
+        <h2>Jogos por Gênero</h2>
+
+            <div class="category-tabs">
+                <button class="tab active" data-category="all">Todos</button>
+                <button class="tab" data-category="acao">Ação / Aventura</button>
+                <button class="tab" data-category="rpg">RPG</button>
+                <button class="tab" data-category="indie">Indie</button>
+                <button class="tab" data-category="corrida">Corrida</button>
+                <button class="tab" data-category="fps">FPS</button>
+                <button class="tab" data-category="strategySimulation">Estratégia / Simulação</button>
+                <button class="tab" data-category="terror">Terror</button>
+                <button class="tab" data-category="esportes">Esportes</button>
+                <button class="tab" data-category="mobile">Mobile</button>
+            </div>
+
+            <div class="grid-games" id="gameGrid">
+
+                <!-- === ação e aventura === -->
+                <article class="game-card" data-category="acao">
+                    <img src="img/action_adventure/Assassins_Creed_Valhalla_capa.png" alt="Assassins Creed Valhalla">
+                    <h3>Assassins Creed Valhalla</h3>
+                    <h5>R$ 279,95</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="acao">
+                    <img src="img/action_adventure/God_of_War_2018_capa.png" alt="God of War 2018">
+                    <h3>God of War (2018)</h3>
+                    <h5>R$ 199,90</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="acao">
+                    <img src="img/action_adventure/Horizon_Zero_Dawn_capa.png" alt="Horizon Zero Dawn">
+                    <h3>Horizon Zero Dawn</h3>
+                    <h5>R$ 229,90</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="acao">
+                    <img src="img/action_adventure/Red_Dead_Redemption_2_capa.png" alt="Red Dead Redemption 2">
+                    <h3>Red Dead Redemption 2</h3>
+                    <h5>R$ 299,99</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="acao">
+                    <img src="img/action_adventure/Tomb_Raider_capa.jpg" alt="Tomb Raider">
+                    <h3>Tomb Raider</h3>
+                    <h5>R$ 14,99</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <!-- === RPG === -->
+                <article class="game-card" data-category="rpg">
+                    <img src="img/rpg/Cyberpunk_2077_capa.png" alt="Cyberpunk 2077">
+                    <h3>Cyberpunk 2077</h3>
+                    <h5>R$ 87,15</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="rpg">
+                    <img src="img/rpg/Final Fantasy XV_capa.jpg" alt="Final Fantasy XV">
+                    <h3>Final Fantasy XV</h3>
+                    <h5>R$ 199,00</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="rpg">
+                    <img src="img/rpg/Persona_5_capa.jpg" alt="Persona 5">
+                    <h3>Persona 5</h3>
+                    <h5>R$ 380,31</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="rpg">
+                    <img src="img/rpg/Skyrim_capa.jpg" alt="Skyrim">
+                    <h3>Skyrim</h3>
+                    <h5>R$ 199,50</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="rpg">
+                    <img src="img/rpg/The Witcher 3_capa.jpg" alt="The Witcher 3">
+                    <h3>The Witcher 3</h3>
+                    <h5>R$ 196,90</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <!-- === Indie === -->
+                <article class="game-card" data-category="indie">
+                    <img src="img/indie/Celeste_capa.png" alt="Celeste">
+                    <h3>Celeste</h3>
+                    <h5>R$ 114,90</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="indie">
+                    <img src="img/indie/Dead Cells_capa.jpg" alt="Dead Cells">
+                    <h3>Dead Cells</h3>
+                    <h5>R$ 124,90</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="indie">
+                    <img src="img/indie/Hades_capa.jpg" alt="Hades">
+                    <h3>Hades</h3>
+                    <h5>R$ 124,50</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="indie">
+                    <img src="img/indie/Hollow Knight_capa.jpg" alt="Hollow Knight">
+                    <h3>Hollow Knight</h3>
+                    <h5>R$ 85,50</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="indie">
+                    <img src="img/indie/Stardew Valley_capa.jpg" alt="Stardew Valley">
+                    <h3>Stardew Valley</h3>
+                    <h5>R$ 24,99</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <!-- === corrida === -->
+                <article class="game-card" data-category="corrida">
+                    <img src="img/race/Crash Team Racing Nitro-Fueled_capa.png" alt="Crash Team Racing Nitro-Fueled">
+                    <h3>Crash Team Racing Nitro-Fueled</h3>
+                    <h5>R$ 214,00</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="corrida">
+                    <img src="img/race/f1 25_capa.jpg" alt="F1 25">
+                    <h3>F1 25</h3>
+                    <h5>R$ 349,00</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="corrida">
+                    <img src="img/race/Forza Horizon 5_capa.jpg" alt="Forza Horizon 5">
+                    <h3>Forza Horizon 5</h3>
+                    <h5>R$ 249,00</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="corrida">
+                    <img src="img/race/Mario Kart 8 Deluxe_capa.jpg" alt="Mario Kart 8 Deluxe">
+                    <h3>Mario Kart 8 Deluxe</h3>
+                    <h5>R$ 349,00</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="corrida">
+                    <img src="img/race/Need_for_Speed_Heat_capa.png" alt="Need for Speed Heat">
+                    <h3>Need for Speed Heat</h3>
+                    <h5>R$ 69,99</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <!-- === FPS === -->
+                <article class="game-card" data-category="fps">
+                    <img src="img/fps_shoot/Apex_legends_capa.jpg" alt="Apex Legends">
+                    <h3>Apex Legends</h3>
+                    <h5>R$ 339,90</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="fps">
+                    <img src="img/fps_shoot/Battlefield_2042_capa.jpg" alt="Battlefield 2042">
+                    <h3>Battlefield 2042</h3>
+                    <h5>R$ 338,90</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="fps">
+                    <img src="img/fps_shoot/CallofDutyModernWarfare(2019)_capa.jpg" alt="Call of Duty Modern Warfare">
+                    <h3>Call of Duty Modern Warfare</h3>
+                    <h5>R$ 176,81</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+                
+                <article class="game-card" data-category="fps">
+                    <img src="img/fps_shoot/Overwatch 2_capa.jpg" alt="Overwatch">
+                    <h3>Overwatch</h3>
+                    <h5>Grátis</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="fps">
+                    <img src="img/fps_shoot/Valorant_capa.png" alt="Valorant">
+                    <h3>Valorant</h3>
+                    <h5>Grátis</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <!-- === Estratégia / Simulação === -->
+                <article class="game-card" data-category="strategySimulation">
+                    <img src="img/strategy_simulation/Age of Empires IV_capa.jpg" alt="Age of Empires IV">
+                    <h3>Age of Empires IV</h3>
+                    <h5>R$ 189,00</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="strategySimulation">
+                    <img src="img/strategy_simulation/Cities_Skylines_capa.jpg" alt="Cities Skylines">
+                    <h3>Cities Skylines</h3>
+                    <h5>R$ 79,00</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="strategySimulation">
+                    <img src="img/strategy_simulation/Civilization VI_capa.jpg" alt="Civilization VI">
+                    <h3>Civilization VI</h3>
+                    <h5>R$ 64,70</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="strategySimulation">
+                    <img src="img/strategy_simulation/StarCraft_II_capa.jpg" alt="StarCraft II">
+                    <h3>StarCraft II</h3>
+                    <h5>Grátis</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="strategySimulation">
+                    <img src="img/strategy_simulation/Tropico 6_capa.jpg" alt="Tropico 6">
+                    <h3>Tropico 6</h3>
+                    <h5>R$ 147,45</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <!-- === terror === -->
+                <article class="game-card" data-category="terror">
+                    <img src="img/terror_survival/Dead_By_Daylight_capa.png" alt="Dead By Daylight">
+                    <h3>Dead By Daylight</h3>
+                    <h5>R$ 245,99</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="terror">
+                    <img src="img/terror_survival/Outlast_capa.jpg" alt="Outlast">
+                    <h3>Outlast</h3>
+                    <h5>R$ 57,45</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="terror">
+                    <img src="img/terror_survival/Phasmophobia_capa.jpg" alt="Phasmophobia">
+                    <h3>Phasmophobia</h3>
+                    <h5>R$ 167,99</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="terror">
+                    <img src="img/terror_survival/Resident_Evil_Village_capa.png" alt="Resident Evil Village">
+                    <h3>Resident Evil Village</h3>
+                    <h5>R$ 184,50</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="terror">
+                    <img src="img/terror_survival/The Forest_capa.jpg" alt="The Forest">
+                    <h3>The Forest</h3>
+                    <h5>R$ 15,44</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <!-- === esportes === -->
+                <article class="game-card" data-category="esportes">
+                    <img src="img/sports/EA25_capa.jpg" alt="EA FC 25">
+                    <h3>EA FC 25</h3>
+                    <h5>R$ 349,90</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="esportes">
+                    <img src="img/sports/Madden NFL 24_capa.jpg" alt="Madden NFL 24">
+                    <h3>Madden NFL 24</h3>
+                    <h5>R$ 358,90</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="esportes">
+                    <img src="img/sports/NBA 2K24_capa.jpg" alt="NBA 2K24">
+                    <h3>NBA 2K24</h3>
+                    <h5>R$ 349,90</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="esportes">
+                    <img src="img/sports/Rocket_League_capa.jpg" alt="Rocket League">
+                    <h3>Rocket League</h3>
+                    <h5>Grátis</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="esportes">
+                    <img src="img/sports/Tony Hawks Pro Skater_capa.jpg" alt="Tony Hawks Pro Skater 1+2">
+                    <h3>Tony Hawks Pro Skater 1+2</h3>
+                    <h5>R$ 199,00</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <!-- === mobile === -->
+                <article class="game-card" data-category="mobile">
+                    <img src="img/mobile/Among Us_capa.jpg" alt="Among Us">
+                    <h3>Among Us</h3>
+                    <h5>Grátis</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="mobile">
+                    <img src="img/mobile/Clash Royale_capa.jpg" alt="Clash Royale">
+                    <h3>Clash Royale</h3>
+                    <h5>Grátis</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="mobile">
+                    <img src="img/mobile/Genshin Impact_capa.jpg" alt="Genshin Impact">
+                    <h3>Genshin Impact</h3>
+                    <h5>Grátis</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="mobile">
+                    <img src="img/mobile/Mario Kart Tour_capa.png" alt="Mario Kart Tour">
+                    <h3>Mario Kart Tour</h3>
+                    <h5>Grátis</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+                <article class="game-card" data-category="mobile">
+                    <img src="img/mobile/Pokémon Go_capa.jpg" alt="Pokémon Go">
+                    <h3>Pokémon Go</h3>
+                    <h5>Grátis</h5>
+                    <a href="#" onclick="event.preventDefault()" class="btn-comprar">Comprar</a>
+                </article>
+
+            </div>
+        </section>
+
+
+      <!-- Duplicar os cards acima para mais jogos -->
+    </section>
+
+    <section class="feedback-section">
+        <h2>O que os jogadores estão dizendo</h2>
+            <div class="feedback-grid">
+                <div class="feedback-card">
+                    <p>"GameVerse é sensacional! Achei vários indies incríveis."</p>
+                    <small>- Pedro, RJ</small>
+                </div>
+                <!-- mais cards -->
+            </div>
+    </section>
+
+  </main>
+
+  <!-- Overlay para desfoque -->
+<div id="overlay"></div>
+
+<!-- Modal do carrinho -->
+<div id="cartModal" class="cart-modal">
+  <h3>Carrinho</h3>
+  <div class="cart-items"></div>
+  <div class="cart-total">Total: R$ 0,00</div>
+  <button class="btn-comprar" id="checkoutBtn">Finalizar Compra</button>
+  <span class="close-modal">&times;</span>
+</div>
+
+  <footer>
+    <p>&copy; 2025 GameVerse. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
